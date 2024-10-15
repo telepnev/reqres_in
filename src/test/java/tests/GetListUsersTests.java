@@ -55,5 +55,6 @@ public class GetListUsersTests {
            // загрузки аватара image.jpg
             assertTrue(user.getAvatar().endsWith("image.jpg"), "Ошибка загрузки аватара");
         }
+
     }
 }
