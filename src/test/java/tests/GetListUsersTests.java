@@ -7,6 +7,8 @@ import model.UserData;
 import model.UsersResponse;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.matchesPattern;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GetListUsersTests {
@@ -24,6 +26,7 @@ public class GetListUsersTests {
                 // тут хедары и всякая остальная инфа
                 .get(BASE_URL)
                 .then()
+                .log().all()
                 // ответ
                 .statusCode(200)
                 .extract().response();
@@ -55,5 +58,19 @@ public class GetListUsersTests {
            // загрузки аватара image.jpg
             assertTrue(user.getAvatar().endsWith("image.jpg"), "Ошибка загрузки аватара");
         }
+    }
+
+    @Test
+    public void simpleTest() {
+        Response response = RestAssured
+                .given()
+                .when()
+                // тут хедары и всякая остальная инфа
+                .get(BASE_URL)
+                .then()
+                .log().all()
+                .body("data.first_name[0]", equalTo("George"))
+                .statusCode(200)
+                .extract().response();
     }
 }
