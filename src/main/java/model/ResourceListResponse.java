@@ -2,14 +2,13 @@ package model;
 
 import java.util.List;
 
-public class UsersResponse {
-
+public class ResourceListResponse {
     private Integer page;
     private Integer per_page;
     private Integer total;
     private Integer total_pages;
     private Support support;
-    private List<UserData> data;
+    private List<ResourceData> data;
 
     public Integer getPage() {
         return page;
@@ -35,20 +34,20 @@ public class UsersResponse {
         this.total = total;
     }
 
-    public List<UserData> getData() {
-        return data;
-    }
-
-    public void setData(List<UserData> data) {
-        this.data = data;
-    }
-
     public Integer getTotal_pages() {
         return total_pages;
     }
 
     public void setTotal_pages(Integer total_pages) {
         this.total_pages = total_pages;
+    }
+
+    public List<ResourceData> getData() {
+        return data;
+    }
+
+    public void setData(List<ResourceData> data) {
+        this.data = data;
     }
 
     public Support getSupport() {
@@ -59,6 +58,3 @@ public class UsersResponse {
         this.support = support;
     }
 }
-
-
-

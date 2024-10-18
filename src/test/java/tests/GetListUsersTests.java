@@ -8,7 +8,6 @@ import model.UsersResponse;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.matchesPattern;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GetListUsersTests {
@@ -22,12 +21,10 @@ public class GetListUsersTests {
         // зарос Get
         Response response = RestAssured
                 .given()
-                .when()
-                // тут хедары и всякая остальная инфа
+                .when() // тут хедары и всякая остальная инфа
                 .get(BASE_URL)
-                .then()
+                .then() // ответ
                 .log().all()
-                // ответ
                 .statusCode(200)
                 .extract().response();
 
@@ -47,14 +44,11 @@ public class GetListUsersTests {
 
         //  проходим циклом и проверяем поля у юзеров
         for(UserData user : usersResponse.getData()) {
-
             // Проверяем что почта пользователя заканчивается на @reqres.in
             assertTrue(user.getEmail().endsWith("@reqres.in"),
                     "Email пользователя не совпадает, Email = " + user.getEmail());
-
             // Проверяем ID юзера
             assertNotNull(user.getId(), "ID юзера вернуло Null");
-
            // загрузки аватара image.jpg
             assertTrue(user.getAvatar().endsWith("image.jpg"), "Ошибка загрузки аватара");
         }
@@ -64,8 +58,7 @@ public class GetListUsersTests {
     public void simpleTest() {
         Response response = RestAssured
                 .given()
-                .when()
-                // тут хедары и всякая остальная инфа
+                .when()        // тут хедары и всякая остальная инфа
                 .get(BASE_URL)
                 .then()
                 .log().all()
