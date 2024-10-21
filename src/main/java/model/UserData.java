@@ -7,6 +7,7 @@ public class UserData {
     private String last_name;
     private String avatar;
 
+
     public Integer getId() {
         return id;
     }

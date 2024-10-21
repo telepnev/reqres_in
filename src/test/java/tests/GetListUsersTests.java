@@ -1,7 +1,7 @@
 package tests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.qameta.allure.Allure;
+import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import model.UserData;
@@ -12,12 +12,15 @@ import static io.qameta.allure.Allure.step;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
+@Epic("Resource")
+@Owner("Dead Moroz")
 public class GetListUsersTests {
 
     private final String BASE_URL = "https://reqres.in/api/users";
     // ObjectMapper из библиотеки com.fasterxml.jackson.databind, мапит JSON с нашими классами, тобишь с обьектами
     private final ObjectMapper objectMapper = new ObjectMapper();
-
+    @Feature("List")
+    @Story("Get list Users")
     @Test
     public void testGetUsersList() throws Exception {
         step("Отправка Get запроса");
