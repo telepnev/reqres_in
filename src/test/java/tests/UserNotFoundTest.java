@@ -10,7 +10,7 @@ import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Epic("Resource")
-@Owner("Artem Eroshenko")
+@Owner("Eroshenko")
 @Severity(SeverityLevel.CRITICAL)
 public class UserNotFoundTest {
     private final String BASE_URL = "https://reqres.in/api/users";
