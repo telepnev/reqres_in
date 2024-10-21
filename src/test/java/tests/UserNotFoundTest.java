@@ -1,18 +1,26 @@
 package tests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.*;
-
+@Epic("Resource")
+@Owner("Artem Eroshenko")
 public class UserNotFoundTest {
     private final String BASE_URL = "https://reqres.in/api/users";
     private final ObjectMapper objectMapper = new ObjectMapper();
-
+    @Feature("Users")
+    @Story("User Not Found execption error 404")
     @Test
     public void userNotFoundTest() throws Exception {
+        step("Вводим несуществующее ID");
         Response response = RestAssured
                 .given()
                 .when()
@@ -23,7 +31,7 @@ public class UserNotFoundTest {
                 .extract().response();
 
         String body = response.getBody().asString();
-
+        step("Проверяем что ответ вернулся пустой ");
         assertEquals("{}", body,"Тело ответа содержит ответ");
     }
 }

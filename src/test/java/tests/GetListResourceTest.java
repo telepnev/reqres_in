@@ -1,22 +1,32 @@
 package tests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import model.ResourceData;
 import model.ResourceListResponse;
 import org.junit.jupiter.api.Test;
 
+
+import static io.qameta.allure.Allure.step;
+
+
 import static org.junit.jupiter.api.Assertions.*;
 
+@Epic("Resource")
+@Owner("Artem Eroshenko")
 public class GetListResourceTest {
 
     private final String BASE_URL = "https://reqres.in/api/unknown";
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+
+    @Feature("List")
+    @Story("Get list Resource")
     @Test
     public void getListResourceTest() throws Exception {
-
+        step("Отправка Get запроса");
         Response response = RestAssured
                 .given()
                 .when()
@@ -25,12 +35,17 @@ public class GetListResourceTest {
                 .log().all()
                 .extract().response();
 
+        step("При образуем Json ответ");
         ResourceListResponse resourceListResponse = objectMapper.readValue(response.asString(), ResourceListResponse.class);
 
+        step("Проверяем ответ 'total_pages'");
         assertEquals(1, resourceListResponse.getPage(), "Кол-во 'total_pages' не совпадает");
-        assertEquals(6, resourceListResponse.getPer_page(), "Кол-во 'total_pages' не совпадает");
-        assertEquals(12, resourceListResponse.getTotal(), "Кол-во 'total_pages' не совпадает");
-        assertEquals(2, resourceListResponse.getTotal_pages(), "Кол-во 'total_pages' не совпадает");
+        step("Проверяем ответ 'Per_page'");
+        assertEquals(6, resourceListResponse.getPer_page(), "Кол-во 'Per_page' не совпадает");
+        step("Проверяем ответ 'Total'");
+        assertEquals(12, resourceListResponse.getTotal(), "Кол-во 'Total' не совпадает");
+        step("Проверяем ответ 'Total_pages'");
+        assertEquals(2, resourceListResponse.getTotal_pages(), "Кол-во 'Total_pages' не совпадает");
 
         for (ResourceData resource : resourceListResponse.getData()) {
             assertNotNull(resource.getId(), "Поле 'id' вернуло null");
