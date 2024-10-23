@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Epic("Resource")
 @Owner("Dead Moroz")
-@Severity(SeverityLevel.CRITICAL)
 public class GetSingleUserTest {
 
     private final String BASE_URL = "https://reqres.in/api/users";

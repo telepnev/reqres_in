@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Epic("Resource")
 @Owner("Eroshenko")
-@Severity(SeverityLevel.CRITICAL)
+@Flaky
 public class UserNotFoundTest {
     private final String BASE_URL = "https://reqres.in/api/users";
     private final ObjectMapper objectMapper = new ObjectMapper();
