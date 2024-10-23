@@ -10,12 +10,11 @@ import org.junit.jupiter.api.Test;
 
 
 import static io.qameta.allure.Allure.step;
-
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @Epic("Resource")
 @Owner("Artem Eroshenko")
+@Severity(SeverityLevel.CRITICAL)
 public class GetListResourceTest {
 
     private final String BASE_URL = "https://reqres.in/api/unknown";

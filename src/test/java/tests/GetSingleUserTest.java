@@ -1,10 +1,7 @@
 package tests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import model.SingleUserResponse;
@@ -13,8 +10,10 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @Epic("Resource")
 @Owner("Dead Moroz")
+@Severity(SeverityLevel.CRITICAL)
 public class GetSingleUserTest {
 
     private final String BASE_URL = "https://reqres.in/api/users";

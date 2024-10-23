@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Epic("Resource")
 @Owner("Dead Moroz")
+@Severity(SeverityLevel.CRITICAL)
 public class GetListUsersTests {
 
     private final String BASE_URL = "https://reqres.in/api/users";
