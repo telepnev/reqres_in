@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Epic("Resource")
 @Owner("Artem Eroshenko")
-@Severity(SeverityLevel.CRITICAL)
 public class SingleResourceNotFoundTest {
     private final String BASE_URL = "https://reqres.in/api/unknown";
     private final ObjectMapper objectMapper = new ObjectMapper();

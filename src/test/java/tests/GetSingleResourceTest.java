@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Epic("Resource")
 @Owner("Artem Eroshenko")
-@Severity(SeverityLevel.CRITICAL)
 public class GetSingleResourceTest {
     private final String BASE_URL = "https://reqres.in/api/unknown";
     private final ObjectMapper objectMapper = new ObjectMapper();
