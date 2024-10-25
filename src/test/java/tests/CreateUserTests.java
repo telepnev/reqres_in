@@ -1,14 +1,11 @@
 package tests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import model.UserCredentials;
+import model.UserJobTitle;
 import model.UserModelResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Epic("Create User")
 @Owner("Artem Eroshenko")
+@Severity(SeverityLevel.CRITICAL)
 public class CreateUserTests {
     private final String BASE_URL = "https://reqres.in/api/users";
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -28,7 +26,7 @@ public class CreateUserTests {
     @Test
     public void createUserTest() throws Exception{
 
-        UserCredentials user = new UserCredentials("Evgen", "QA");
+        UserJobTitle user = new UserJobTitle("Evgen", "QA");
 
         step("Отправка Post запроса");
         Response response = RestAssured
@@ -68,7 +66,7 @@ public class CreateUserTests {
     @Test
     public void createUserWithoutJobTest() throws Exception{
 
-        UserCredentials user = new UserCredentials("Evgen", null);
+        UserJobTitle user = new UserJobTitle("Evgen", null);
 
         step("Отправка Post запроса");
         Response response = RestAssured
@@ -108,7 +106,7 @@ public class CreateUserTests {
     @Test
     public void createUserWithoutNameTest() throws Exception{
 
-        UserCredentials user = new UserCredentials(null, "AQA");
+        UserJobTitle user = new UserJobTitle(null, "AQA");
 
         step("Отправка Post запроса");
         Response response = RestAssured

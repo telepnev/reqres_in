@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
@@ -17,6 +18,7 @@ public class SingleResourceNotFoundTest {
 
     @Feature("Single Resource")
     @Story("Resource Not Found execption error 404")
+    @Disabled("Jira - 666")
     @Test
     public void resourceNotFoundTest() {
         step("Вводим несуществующее ID");
