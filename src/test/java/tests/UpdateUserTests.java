@@ -8,7 +8,7 @@ import io.qameta.allure.Story;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import model.UserCredentials;
+import model.UserJobTitle;
 import model.UserModelResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ public class UpdateUserTests {
     @Test
     public void updateUserTest() throws Exception {
 
-        UserCredentials user = new UserCredentials("Evgen", "QA");
+        UserJobTitle user = new UserJobTitle("Evgen", "QA");
 
         step("Отправка Post запроса");
         Response response = RestAssured
@@ -66,7 +66,7 @@ public class UpdateUserTests {
     @Test
     public void updateUserWithoutNameTest() throws Exception {
 
-        UserCredentials user = new UserCredentials(null, "QA");
+        UserJobTitle user = new UserJobTitle(null, "QA");
 
         step("Отправка Post запроса");
         Response response = RestAssured
@@ -102,7 +102,7 @@ public class UpdateUserTests {
     @Test
     public void updateUserWithoutJobTest() throws Exception {
 
-        UserCredentials user = new UserCredentials("Evgen", null);
+        UserJobTitle user = new UserJobTitle("Evgen", null);
 
         step("Отправка Post запроса");
         Response response = RestAssured
@@ -139,7 +139,7 @@ public class UpdateUserTests {
     @Test
     public void updateUserWithoutNameAndJobTest() throws Exception {
 
-        UserCredentials user = new UserCredentials();
+        UserJobTitle user = new UserJobTitle();
 
         step("Отправка Post запроса");
         Response response = RestAssured
